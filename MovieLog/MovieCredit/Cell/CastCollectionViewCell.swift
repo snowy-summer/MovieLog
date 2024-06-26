@@ -64,22 +64,22 @@ extension CastCollectionViewCell {
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.directionalHorizontalEdges.equalToSuperview()
+            make.height.equalTo(contentView.snp.width).multipliedBy(1.2)
             
         }
         
         characterLabel.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.bottom).offset(4)
-            make.centerX.equalTo(profileImageView.snp.centerX)
             make.leading.equalTo(profileImageView.snp.leading)
             make.trailing.equalTo(profileImageView.snp.trailing)
+            make.height.equalTo(profileImageView.snp.height).dividedBy(5)
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(characterLabel.snp.bottom).offset(4)
-            make.centerX.equalTo(profileImageView.snp.centerX)
+            make.top.equalTo(characterLabel.snp.bottom)
             make.leading.equalTo(profileImageView.snp.leading)
             make.trailing.equalTo(profileImageView.snp.trailing)
-            make.bottom.equalTo(contentView.snp.bottom)
+            make.height.equalTo(profileImageView.snp.height).dividedBy(5)
         }
         
         

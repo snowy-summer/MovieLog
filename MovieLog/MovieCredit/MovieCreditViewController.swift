@@ -159,13 +159,22 @@ extension MovieCreditViewController {
 extension MovieCreditViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if movieModel.similarMovies?.results.isEmpty ?? true {
-            return MovieCreditCollectionViewSections.allCases.count - 2
-        } else if movieModel.recommendedMovies?.results.isEmpty ?? true {
-            return MovieCreditCollectionViewSections.allCases.count - 1
+        
+        var sectionsCount = MovieCreditCollectionViewSections.allCases.count
+        
+        if movieModel.movieCast?.cast.isEmpty ?? true {
+            sectionsCount -= 1
         }
         
-        return MovieCreditCollectionViewSections.allCases.count
+        if movieModel.similarMovies?.results.isEmpty ?? true {
+            sectionsCount -= 1
+        }
+        
+        if movieModel.recommendedMovies?.results.isEmpty ?? true {
+            sectionsCount -= 1
+        }
+        
+        return sectionsCount
     }
     
     func collectionView(_ collectionView: UICollectionView,

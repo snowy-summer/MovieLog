@@ -88,7 +88,7 @@ enum MovieCreditCollectionViewSections: Int, CaseIterable {
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2),
-                                                   heightDimension: .fractionalHeight(0.2))
+                                                   heightDimension: .fractionalWidth(0.35))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                            subitems: [item])
             

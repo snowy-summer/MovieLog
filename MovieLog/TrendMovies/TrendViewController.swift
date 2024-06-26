@@ -21,7 +21,7 @@ final class TrendViewController: BaseViewController {
         configureCollectionView()
     
         NetworkManager.shared.fetchData(TrendDTO.self,
-                                        router: .trend) { [weak self] result in
+                                        router: .trend(.week)) { [weak self] result in
             guard let self = self else { return }
             
             switch result {

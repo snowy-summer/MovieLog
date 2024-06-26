@@ -8,27 +8,14 @@
 import Foundation
 
 struct QueryOfTrend {
-    private let timeWindow: TimeWindow
     private let language: String?
     
-    enum TimeWindow: String {
-        case day
-        case week
-    }
-    
-    init(timeWindow: TimeWindow,
-         language: String? = "ko-KR") {
-        
-        self.timeWindow = timeWindow
+    init(language: String? = "ko-KR") {
         self.language = language
     }
     
     func queryItem() -> [URLQueryItem] {
         var queryItems = [URLQueryItem]()
-        
-        queryItems.append(URLQueryItem(name: "time_window",
-                                       value: timeWindow.rawValue))
-        
        
         if let language = language {
             queryItems.append(URLQueryItem(name: "language",
@@ -38,4 +25,9 @@ struct QueryOfTrend {
         return queryItems
         
     }
+}
+
+enum TimeWindow: String {
+    case day
+    case week
 }

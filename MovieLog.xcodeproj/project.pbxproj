@@ -229,7 +229,6 @@
 			children = (
 				6B96466D2C2C17C500D73C11 /* MovieCreditViewController.swift */,
 				6B96466F2C2C17DC00D73C11 /* MovieCreditCollectionViewSections.swift */,
-				6B9646782C2C1C1400D73C11 /* TitleHeaderView.swift */,
 				6B96467A2C2C1C6A00D73C11 /* MovieCreditModel.swift */,
 				6B9646772C2C1BC600D73C11 /* Cell */,
 			);
@@ -240,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				6B96467C2C2C472D00D73C11 /* HeaderCell.swift */,
+				6B9646782C2C1C1400D73C11 /* TitleHeaderView.swift */,
 				6B9646712C2C192E00D73C11 /* PosterCollectionViewCell.swift */,
 				6B9646732C2C19EF00D73C11 /* OverviewCollectionViewCell.swift */,
 				6B9646752C2C1A7600D73C11 /* CastCollectionViewCell.swift */,

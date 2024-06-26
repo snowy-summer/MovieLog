@@ -11,7 +11,7 @@ import Alamofire
 enum TMDBRequest: URLRequestConvertible {
     
     case search(String)
-    case trend
+    case trend(TimeWindow)
     case credit(String)
     case similarMovies(String)
     case recommendedMovies(String)
@@ -38,8 +38,8 @@ enum TMDBRequest: URLRequestConvertible {
         switch self {
         case .search:
             return "/3/search/movie"
-        case .trend:
-            return "/3/trending/all/day"
+        case .trend(let time):
+            return "/3/trending/movie/\(time.rawValue)"
         case .credit(let movieId):
             return "/3/movie/\(movieId)/credits"
         case .similarMovies(let movieId):
@@ -51,7 +51,7 @@ enum TMDBRequest: URLRequestConvertible {
         }
         
     }
-    
+ 
     var parameter: [URLQueryItem] {
         
         switch self {
@@ -59,7 +59,7 @@ enum TMDBRequest: URLRequestConvertible {
             return QueryOfSearch(query: movie).queryItem()
             
         case .trend:
-            return QueryOfTrend(timeWindow: .week).queryItem()
+            return QueryOfTrend().queryItem()
             
         case .credit(let movieId):
             return QueryOfCredit(movieId: movieId).queryItem()
