@@ -7,15 +7,6 @@
 
 import Foundation
 
-// MARK: - CreditDTO
-struct MovieCreditDTO: Decodable {
-    let id: Int
-    let overview: String
-    let posterPath: String?
-    let backdropPath: String?
-    var cast = [Cast]()
-}
-
 // MARK: - Casts
 struct Casts: Decodable {
     let id: Int

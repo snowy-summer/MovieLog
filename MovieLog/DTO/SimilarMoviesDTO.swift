@@ -1,5 +1,5 @@
 //
-//  RecommendMovieDTO.swift
+//  SimilarMoviesDTO.swift
 //  MovieLog
 //
 //  Created by 최승범 on 6/26/24.
@@ -7,13 +7,12 @@
 
 import Foundation
 
-//MARK: - RecommendMovieDTO
-
-struct RecommendMovieDTO: Codable {
+// MARK: - SimilarMoviesDTO
+struct SimilarMoviesDTO: Decodable {
     let page: Int
-    let results: [RecommendResult]
+    let results: [SimilarResult]
     let totalPages, totalResults: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case page, results
         case totalPages = "total_pages"
@@ -22,29 +21,27 @@ struct RecommendMovieDTO: Codable {
 }
 
 // MARK: - Result
-
-struct RecommendResult: Codable {
+struct SimilarResult: Decodable {
     let id: Int
-    let backdropPath: String?
-    let originalTitle, overview: String
-    let posterPath: String?
-    let adult: Bool
-    let title: String
+    let adult: Bool?
     let genreIDS: [Int]
+    let originalTitle, title: String
+    let releaseDate, overview: String
+    let posterPath, backdropPath: String?
     let popularity: Double
-    let releaseDate: String
     let voteAverage: Double
     let voteCount: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case id
-        case adult, title
+        case title
+        case adult
         case overview
         case popularity
         case backdropPath = "backdrop_path"
+        case genreIDS = "genre_ids"
         case originalTitle = "original_title"
         case posterPath = "poster_path"
-        case genreIDS = "genre_ids"
         case releaseDate = "release_date"
         case voteAverage = "vote_average"
         case voteCount = "vote_count"

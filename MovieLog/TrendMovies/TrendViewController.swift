@@ -19,7 +19,6 @@ final class TrendViewController: BaseViewController {
         super.viewDidLoad()
         
         configureCollectionView()
-        
     
         NetworkManager.shared.fetchData(TrendDTO.self,
                                         router: .trend) { [weak self] result in
@@ -127,6 +126,15 @@ extension TrendViewController: UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let movie = trendMovieModel?.results[indexPath.row] {
+            let movieModel = MovieCreditModel(movieId: String(movie.id),
+                                              overview: movie.overview,
+                                              posterPath: movie.posterPath,
+                                              backdropPath: movie.backdropPath)
+            
+            navigationController?.pushViewController(MovieCreditViewController(movieModel: movieModel),
+                                                     animated: true)
+        }
     }
     
     //MARK: - FlowLayoutDelegate
