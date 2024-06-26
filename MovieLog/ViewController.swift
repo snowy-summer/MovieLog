@@ -12,6 +12,15 @@ final class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NetworkManager.shared.fetchData(SearchDTO.self,
+                                        router: .search("소리")) { result in
+            switch result {
+            case .success(let data):
+                print(data)
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
 
 
