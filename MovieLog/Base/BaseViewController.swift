@@ -9,6 +9,10 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,24 +23,36 @@ class BaseViewController: UIViewController {
         configureGestureAndButtonActions()
     }
     
-    private func configureNavigationBar() {
-        
+    @available(*,unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureHierarchy() {
-        
+    func configureNavigationBar() { }
+    func configureHierarchy() { }
+    
+    func configureUI() {
+        view.backgroundColor = .white
     }
     
-    private func configureUI() {
-        
+    func configureGestureAndButtonActions() { }
+    func configureLayout() { }
+}
+
+class BaseView: UIView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
-    private func configureGestureAndButtonActions() {
-        
+    @available(*,unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureLayout() {
-        
-    }
-    
+    func configureNavigationBar() { }
+    func configureHierarchy() { }
+    func configureUI() { }
+    func configureGestureAndButtonActions() { }
+    func configureLayout() { }
 }

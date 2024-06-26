@@ -29,8 +29,8 @@ struct TrendResult: Decodable {
     let genreIDS: [Int]
     let popularity: Double?
     let releaseDate: String?
-    let voteAverage: Double?
-    let voteCount: Int?
+    let voteAverage: Double
+    let voteCount: Int
 
     enum CodingKeys: String, CodingKey {
         case id
