@@ -73,7 +73,7 @@ extension TrendCollectionViewCell {
         dateLabel.textColor = .lightGray
         dateLabel.font = .systemFont(ofSize: 14, weight: .regular)
         
-        trendContainerView.backgroundColor = .white
+        trendContainerView.backgroundColor = .base
         trendContainerView.layer.cornerRadius = 12
         trendContainerView.layer.shadowOpacity = 0.4
         trendContainerView.layer.shadowRadius = 12
@@ -101,7 +101,7 @@ extension TrendCollectionViewCell {
         scoreNumLabel.font = .systemFont(ofSize: 12)
 
         moreImageView.image = UIImage(systemName: "chevron.forward")
-        moreImageView.tintColor = .black
+        moreImageView.tintColor = .baseFont
     }
     
     private func configureLayout() {

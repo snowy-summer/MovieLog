@@ -31,7 +31,6 @@ extension PosterCollectionViewCell {
     
     func updateContent(imageString: String) {
         
-        
         thumbnailImageView.kf.setImage(with: TMDBRequest.image(imageString).url)
     }
 }
@@ -49,7 +48,7 @@ extension PosterCollectionViewCell {
         
         thumbnailImageView.layer.cornerRadius = 8
         thumbnailImageView.clipsToBounds = true
-        thumbnailImageView.backgroundColor = .black
+        thumbnailImageView.backgroundColor = .baseFont
     }
     
     private func configureLayout() {

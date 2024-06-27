@@ -27,13 +27,12 @@ final class MovieCreditViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .base
         
         configureCollectionView()
         fetchData()
         
     }
-    
     
     override func configureHierarchy() {
         view.addSubview(recommendCollectionView)
@@ -62,8 +61,6 @@ final class MovieCreditViewController: BaseViewController {
                                          forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                          withReuseIdentifier: TitleHeaderView.identifier)
     }
-    
-    
     
 }
 

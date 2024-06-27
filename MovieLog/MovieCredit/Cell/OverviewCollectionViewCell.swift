@@ -53,7 +53,7 @@ extension OverviewCollectionViewCell {
     
     private func configureUI() {
         moreImageView.image = UIImage(systemName: "chevron.down")
-        moreImageView.tintColor = .black
+        moreImageView.tintColor = .baseFont
         
         overviewLabel.numberOfLines = 3
     }

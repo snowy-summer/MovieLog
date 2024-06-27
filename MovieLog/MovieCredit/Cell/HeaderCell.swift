@@ -49,7 +49,7 @@ extension HeaderCell {
         
         thumbnailImageView.layer.cornerRadius = 8
         thumbnailImageView.clipsToBounds = true
-        thumbnailImageView.backgroundColor = .black
+        thumbnailImageView.backgroundColor = .baseFont
     }
     
     private func configureLayout() {

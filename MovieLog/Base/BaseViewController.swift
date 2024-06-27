@@ -32,27 +32,9 @@ class BaseViewController: UIViewController {
     func configureHierarchy() { }
     
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .base
     }
     
-    func configureGestureAndButtonActions() { }
-    func configureLayout() { }
-}
-
-class BaseView: UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    @available(*,unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configureNavigationBar() { }
-    func configureHierarchy() { }
-    func configureUI() { }
     func configureGestureAndButtonActions() { }
     func configureLayout() { }
 }

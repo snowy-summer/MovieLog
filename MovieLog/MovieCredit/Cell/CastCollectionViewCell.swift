@@ -31,6 +31,8 @@ final class CastCollectionViewCell: UICollectionViewCell {
     
         if let profilePath = data.profilePath {
             profileImageView.kf.setImage(with: TMDBRequest.image(profilePath).url)
+        } else {
+            profileImageView.image = UIImage(systemName: "person")
         }
         nameLabel.text = data.name
         characterLabel.text = data.character
@@ -52,7 +54,7 @@ extension CastCollectionViewCell {
         profileImageView.backgroundColor = .gray
         
         characterLabel.font = .systemFont(ofSize: 12, weight: .bold)
-        characterLabel.textColor = .black
+        characterLabel.textColor = .baseFont
         
         nameLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         nameLabel.textColor = .lightGray
