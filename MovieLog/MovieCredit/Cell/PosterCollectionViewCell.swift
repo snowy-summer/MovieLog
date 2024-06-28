@@ -30,7 +30,8 @@ final class PosterCollectionViewCell: UICollectionViewCell {
 extension PosterCollectionViewCell {
     
     func updateContent(imageString: String) {
-        
+
+        thumbnailImageView.kf.indicatorType = .activity
         thumbnailImageView.kf.setImage(with: TMDBRequest.image(imageString).url)
     }
 }
@@ -48,7 +49,6 @@ extension PosterCollectionViewCell {
         
         thumbnailImageView.layer.cornerRadius = 8
         thumbnailImageView.clipsToBounds = true
-        thumbnailImageView.backgroundColor = .baseFont
     }
     
     private func configureLayout() {

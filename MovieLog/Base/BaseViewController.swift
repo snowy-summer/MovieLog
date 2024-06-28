@@ -37,4 +37,8 @@ class BaseViewController: UIViewController {
     
     func configureGestureAndButtonActions() { }
     func configureLayout() { }
+    
+    @objc func popVC() {
+        navigationController?.popViewController(animated: true)
+    }
 }

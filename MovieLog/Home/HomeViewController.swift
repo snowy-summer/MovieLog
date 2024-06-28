@@ -86,7 +86,8 @@ final class HomeViewController: BaseViewController {
 
 //MARK: - Objc
     @objc func searchButtonClicked() {
-        
+        navigationController?.pushViewController(SearchViewController(),
+                                                 animated: true)
     }
     
 }
