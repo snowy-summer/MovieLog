@@ -15,6 +15,7 @@ enum TMDBRequest: URLRequestConvertible {
     case credit(String)
     case similarMovies(String)
     case recommendedMovies(String)
+    case detail(String)
     case image(String)
     
     var scheme: String {
@@ -46,6 +47,8 @@ enum TMDBRequest: URLRequestConvertible {
             return "/3/movie/\(movieId)/similar"
         case .recommendedMovies(let movieId):
             return "/3/movie/\(movieId)/recommendations"
+        case .detail(let movieId):
+            return "/3/movie/\(movieId)"
         case.image(let posterPath):
             return "/t/p/w500" + posterPath
         }
@@ -69,6 +72,9 @@ enum TMDBRequest: URLRequestConvertible {
             
         case .recommendedMovies(let movieId):
             return QueryOfSimilarAndRecommendations(movieId: movieId).queryItem()
+            
+        case .detail:
+            return QueryOfDetail().queryItem()
         
         default:
             return [URLQueryItem]()

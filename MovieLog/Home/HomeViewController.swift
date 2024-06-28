@@ -173,12 +173,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch HomeCollectionViewSections(rawValue: indexPath.section) {
         case .trend:
             if let movie = trendMovieModel?.results[indexPath.row] {
-                let movieModel = MovieCreditModel(movieId: String(movie.id),
-                                                  overview: movie.overview,
-                                                  posterPath: movie.posterPath,
-                                                  backdropPath: movie.backdropPath)
-                
-                navigationController?.pushViewController(MovieCreditViewController(movieModel: movieModel),
+                navigationController?.pushViewController(MovieDetailViewController(movieId: movie.id),
                                                          animated: true)
             }
         default:

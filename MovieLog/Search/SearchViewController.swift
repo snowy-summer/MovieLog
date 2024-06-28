@@ -135,7 +135,9 @@ final class SearchViewController: BaseViewController {
 //MARK: - CollectionViewDelegate, CollectionViewDataSource
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return searchModel?.results.count ?? 0
     }
     
@@ -151,6 +153,15 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        if let movie = searchModel?.results[indexPath.row] {
+            
+            navigationController?.pushViewController(MovieDetailViewController(movieId: movie.id),
+                                                     animated: true)
+        }
     }
 }
 

@@ -13,6 +13,8 @@
 		6B1A67B32C2D9A120035FB55 /* HomeMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1A67B22C2D9A120035FB55 /* HomeMainCollectionViewCell.swift */; };
 		6B1A67B52C2DA7D20035FB55 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1A67B42C2DA7D20035FB55 /* UIButton+Extension.swift */; };
 		6B1A67BB2C2E76B00035FB55 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1A67BA2C2E76B00035FB55 /* SearchViewController.swift */; };
+		6B1A67BD2C2E89420035FB55 /* MovieDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1A67BC2C2E89420035FB55 /* MovieDetailDTO.swift */; };
+		6B1A67BF2C2E8A850035FB55 /* QueryOfDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1A67BE2C2E8A850035FB55 /* QueryOfDetail.swift */; };
 		6B9646162C2A881200D73C11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9646152C2A881200D73C11 /* AppDelegate.swift */; };
 		6B9646182C2A881200D73C11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9646172C2A881200D73C11 /* SceneDelegate.swift */; };
 		6B96461F2C2A881300D73C11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B96461E2C2A881300D73C11 /* Assets.xcassets */; };
@@ -39,7 +41,7 @@
 		6B9646662C2C11A500D73C11 /* QueryOfTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9646652C2C11A500D73C11 /* QueryOfTrend.swift */; };
 		6B9646682C2C12FB00D73C11 /* QueryOfSimilarAndRecommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9646672C2C12FB00D73C11 /* QueryOfSimilarAndRecommendations.swift */; };
 		6B96466A2C2C135A00D73C11 /* QueryOfCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9646692C2C135A00D73C11 /* QueryOfCredit.swift */; };
-		6B96466E2C2C17C500D73C11 /* MovieCreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96466D2C2C17C500D73C11 /* MovieCreditViewController.swift */; };
+		6B96466E2C2C17C500D73C11 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96466D2C2C17C500D73C11 /* MovieDetailViewController.swift */; };
 		6B9646702C2C17DC00D73C11 /* MovieCreditCollectionViewSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96466F2C2C17DC00D73C11 /* MovieCreditCollectionViewSections.swift */; };
 		6B9646722C2C192E00D73C11 /* PosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9646712C2C192E00D73C11 /* PosterCollectionViewCell.swift */; };
 		6B9646742C2C19EF00D73C11 /* OverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9646732C2C19EF00D73C11 /* OverviewCollectionViewCell.swift */; };
@@ -57,6 +59,8 @@
 		6B1A67B22C2D9A120035FB55 /* HomeMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		6B1A67B42C2DA7D20035FB55 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		6B1A67BA2C2E76B00035FB55 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6B1A67BC2C2E89420035FB55 /* MovieDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailDTO.swift; sourceTree = "<group>"; };
+		6B1A67BE2C2E8A850035FB55 /* QueryOfDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOfDetail.swift; sourceTree = "<group>"; };
 		6B9646122C2A881200D73C11 /* MovieLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9646152C2A881200D73C11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B9646172C2A881200D73C11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,7 +86,7 @@
 		6B9646652C2C11A500D73C11 /* QueryOfTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOfTrend.swift; sourceTree = "<group>"; };
 		6B9646672C2C12FB00D73C11 /* QueryOfSimilarAndRecommendations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOfSimilarAndRecommendations.swift; sourceTree = "<group>"; };
 		6B9646692C2C135A00D73C11 /* QueryOfCredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOfCredit.swift; sourceTree = "<group>"; };
-		6B96466D2C2C17C500D73C11 /* MovieCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreditViewController.swift; sourceTree = "<group>"; };
+		6B96466D2C2C17C500D73C11 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		6B96466F2C2C17DC00D73C11 /* MovieCreditCollectionViewSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreditCollectionViewSections.swift; sourceTree = "<group>"; };
 		6B9646712C2C192E00D73C11 /* PosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		6B9646732C2C19EF00D73C11 /* OverviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 				6B9646652C2C11A500D73C11 /* QueryOfTrend.swift */,
 				6B9646672C2C12FB00D73C11 /* QueryOfSimilarAndRecommendations.swift */,
 				6B9646692C2C135A00D73C11 /* QueryOfCredit.swift */,
+				6B1A67BE2C2E8A850035FB55 /* QueryOfDetail.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 			children = (
 				6B9646502C2BF8CC00D73C11 /* SearchDTO.swift */,
 				6B9646582C2BFDF300D73C11 /* TrendDTO.swift */,
+				6B1A67BC2C2E89420035FB55 /* MovieDetailDTO.swift */,
 				6B96465A2C2BFF1100D73C11 /* MovieCreditDTO.swift */,
 				6B96465C2C2BFF7B00D73C11 /* SimilarMoviesDTO.swift */,
 				6B96465F2C2C004700D73C11 /* RecommendedMoviesDTO.swift */,
@@ -259,7 +265,7 @@
 		6B96466C2C2C17A100D73C11 /* MovieCredit */ = {
 			isa = PBXGroup;
 			children = (
-				6B96466D2C2C17C500D73C11 /* MovieCreditViewController.swift */,
+				6B96466D2C2C17C500D73C11 /* MovieDetailViewController.swift */,
 				6B96466F2C2C17DC00D73C11 /* MovieCreditCollectionViewSections.swift */,
 				6B96467A2C2C1C6A00D73C11 /* MovieCreditModel.swift */,
 				6B9646772C2C1BC600D73C11 /* Cell */,
@@ -376,9 +382,10 @@
 				6B1A67B52C2DA7D20035FB55 /* UIButton+Extension.swift in Sources */,
 				6B9646592C2BFDF300D73C11 /* TrendDTO.swift in Sources */,
 				6B9646682C2C12FB00D73C11 /* QueryOfSimilarAndRecommendations.swift in Sources */,
-				6B96466E2C2C17C500D73C11 /* MovieCreditViewController.swift in Sources */,
+				6B96466E2C2C17C500D73C11 /* MovieDetailViewController.swift in Sources */,
 				6B9646342C2AAEE400D73C11 /* TMDBRouter.swift in Sources */,
 				6B9646792C2C1C1400D73C11 /* TitleHeaderView.swift in Sources */,
+				6B1A67BD2C2E89420035FB55 /* MovieDetailDTO.swift in Sources */,
 				6B9646742C2C19EF00D73C11 /* OverviewCollectionViewCell.swift in Sources */,
 				6B1A67B12C2D8AB80035FB55 /* BaseView.swift in Sources */,
 				6B96465B2C2BFF1100D73C11 /* MovieCreditDTO.swift in Sources */,
@@ -395,6 +402,7 @@
 				6B9646572C2BFCBD00D73C11 /* TMDBHeader.swift in Sources */,
 				6B1A67AD2C2D80360035FB55 /* HomeCollectionViewSections.swift in Sources */,
 				6B1A67B32C2D9A120035FB55 /* HomeMainCollectionViewCell.swift in Sources */,
+				6B1A67BF2C2E8A850035FB55 /* QueryOfDetail.swift in Sources */,
 				6B96467F2C2CE9C300D73C11 /* HomeViewController.swift in Sources */,
 				6B9646552C2BFC7B00D73C11 /* NetworkError.swift in Sources */,
 				6B9646482C2BC11800D73C11 /* APIKey.swift in Sources */,

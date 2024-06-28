@@ -9,9 +9,7 @@ import Foundation
 
 struct MovieCreditModel {
     let movieId: String
-    let overview: String?
-    let posterPath: String?
-    let backdropPath: String?
+    var movieDetail: MovieDetailDTO?
     var movieCast: Casts?
     var similarMovies: SimilarMoviesDTO?
     var recommendedMovies: RecommendedMoviesDTO?

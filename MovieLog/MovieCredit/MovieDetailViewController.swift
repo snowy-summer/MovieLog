@@ -1,5 +1,5 @@
 //
-//  MovieCreditViewController.swift
+//  MovieDetailViewController.swift
 //  MovieLog
 //
 //  Created by 최승범 on 6/26/24.
@@ -8,15 +8,15 @@
 import UIKit
 import SnapKit
 
-final class MovieCreditViewController: BaseViewController {
+final class MovieDetailViewController: BaseViewController {
     
     private lazy var recommendCollectionView = UICollectionView(frame: .zero,
                                                                 collectionViewLayout: createCollectionViewLayout())
     
     private var movieModel: MovieCreditModel
     
-    init(movieModel: MovieCreditModel) {
-        self.movieModel = movieModel
+    init(movieId: Int) {
+        self.movieModel = MovieCreditModel(movieId: String(movieId))
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -64,11 +64,32 @@ final class MovieCreditViewController: BaseViewController {
     
 }
 
-extension MovieCreditViewController {
+extension MovieDetailViewController {
     
     private func fetchData() {
         let id = movieModel.movieId
         let group = DispatchGroup()
+        
+        group.enter()
+        DispatchQueue.global().async {
+            NetworkManager.shared.fetchData(MovieDetailDTO.self,
+                                            router: .detail(id)) { [weak self] result in
+                guard let self = self else { return }
+                
+                switch result {
+                case .success(let detailData):
+                    movieModel.movieDetail = detailData
+                    group.leave()
+                    
+                case .failure(let failure):
+                    print(failure)
+                    group.leave()
+                }
+                
+                
+            }
+        }
+        
         
         group.enter()
         DispatchQueue.global().async {
@@ -153,7 +174,7 @@ extension MovieCreditViewController {
 }
 
 //MARK: - collectionView Delegate Datasource
-extension MovieCreditViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MovieDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
@@ -202,7 +223,7 @@ extension MovieCreditViewController: UICollectionViewDelegate, UICollectionViewD
                 return PosterCollectionViewCell()
             }
             
-            if let data = movieModel.backdropPath {
+            if let data = movieModel.movieDetail?.backdropPath {
                 cell.updateContent(imageString: data)
             }
             
@@ -214,7 +235,7 @@ extension MovieCreditViewController: UICollectionViewDelegate, UICollectionViewD
                 return OverviewCollectionViewCell()
             }
             
-            if let data = movieModel.overview {
+            if let data = movieModel.movieDetail?.overview {
                 cell.updateContent(data: data)
             }
             
