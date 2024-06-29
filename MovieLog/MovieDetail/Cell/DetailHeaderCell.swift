@@ -11,10 +11,12 @@ import SnapKit
 final class DetailHeaderCell: UICollectionViewCell {
     
     private let thumbnailImageView = UIImageView()
+    private let titleLabel = UILabel()
     private let dateLabel = UILabel()
     private let genreLabel = UILabel()
     private let scoreStarImageView = UIImageView()
     private let voteAverageLabel = UILabel()
+    private let playButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,9 +35,28 @@ final class DetailHeaderCell: UICollectionViewCell {
 
 extension DetailHeaderCell {
     
-    func updateContent(imageString: String) {
+    func updateContent(data: MovieDetailDTO) {
+        if let imagePath = data.backdropPath {
+            thumbnailImageView.kf.setImage(with: TMDBRequest.image(imagePath).url)
+        }
+        if let voteAverage = data.voteAverage {
+            voteAverageLabel.text = "\(round(voteAverage * 10) / 10)"
+        } else {
+            voteAverageLabel.text = "평가중"
+        }
         
-        thumbnailImageView.kf.setImage(with: TMDBRequest.image(imageString).url)
+        titleLabel.text = data.title
+
+        dateLabel.text = data.releaseDate?.split(separator: "-").map{ String($0) }[0]
+        
+        
+        if let genres = data.genres {
+            var genreText = ""
+            genres.forEach { genre in
+                genreText += "\(genre.name) "
+            }
+            genreLabel.text = genreText
+        }
     }
 }
 
@@ -46,6 +67,8 @@ extension DetailHeaderCell {
     private func configureHierarchy() {
         
         contentView.addSubview(thumbnailImageView)
+        contentView.addSubview(playButton)
+        contentView.addSubview(titleLabel)
         contentView.addSubview(scoreStarImageView)
         contentView.addSubview(voteAverageLabel)
         contentView.addSubview(dateLabel)
@@ -58,28 +81,71 @@ extension DetailHeaderCell {
         thumbnailImageView.clipsToBounds = true
         thumbnailImageView.backgroundColor = .baseFont
         
+        titleLabel.textColor = .baseFont
+        
         scoreStarImageView.image = UIImage(systemName: "star.fill")
         scoreStarImageView.tintColor = #colorLiteral(red: 1, green: 0.8878700137, blue: 0.2636117339, alpha: 1)
         
-        voteAverageLabel.font = .systemFont(ofSize: 12)
-        voteAverageLabel.text = "8.9"
+        voteAverageLabel.font = .systemFont(ofSize: 14)
+        voteAverageLabel.textColor = .lightGray
+        
+        dateLabel.font = .systemFont(ofSize: 14)
+        dateLabel.textColor = .lightGray
+        
+        genreLabel.font = .systemFont(ofSize: 14)
+        genreLabel.textColor = .lightGray
+        
+        playButton.buttonStyle(type: .play)
     }
     
     private func configureLayout() {
         
-        thumbnailImageView.snp.makeConstraints { make in
-            make.top.directionalHorizontalEdges.equalTo(contentView)
-            make.height.equalTo(contentView.snp.height).multipliedBy(0.75)
+        playButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.directionalHorizontalEdges.equalTo(contentView.snp.directionalHorizontalEdges)
         }
         
-        scoreStarImageView.snp.makeConstraints { make in
+        
+        
+        thumbnailImageView.snp.makeConstraints { make in
+            make.top.directionalHorizontalEdges.equalTo(contentView)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(thumbnailImageView.snp.leading)
             make.top.equalTo(thumbnailImageView.snp.bottom).offset(8)
+            make.height.equalTo(20)
+        }
+    
+        scoreStarImageView.snp.makeConstraints { make in
+            make.leading.equalTo(thumbnailImageView.snp.leading)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.bottom.equalTo(playButton.snp.top).offset(-8)
+            make.height.equalTo(20)
         }
         
         voteAverageLabel.snp.makeConstraints { make in
-            make.leading.equalTo(scoreStarImageView.snp.trailing)
-            make.top.equalTo(thumbnailImageView.snp.bottom).offset(8)
+            make.leading.equalTo(scoreStarImageView.snp.trailing).offset(8)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.bottom.equalTo(playButton.snp.top).offset(-8)
+            make.height.equalTo(20)
+        
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.leading.equalTo(voteAverageLabel.snp.trailing).offset(20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.bottom.equalTo(playButton.snp.top).offset(-8)
+            make.height.equalTo(20)
+        
+        }
+        
+        genreLabel.snp.makeConstraints { make in
+            make.leading.equalTo(dateLabel.snp.trailing).offset(20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.bottom.equalTo(playButton.snp.top).offset(-8)
+            make.height.equalTo(20)
+        
         }
     }
 }

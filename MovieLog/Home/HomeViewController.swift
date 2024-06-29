@@ -125,7 +125,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return HomeMainCollectionViewCell()
             }
             
-            if let path = trendMovieModel?.results[indexPath.item].posterPath {
+            if let path = trendMovieModel?.results.last?.posterPath {
                 cell.updateContent(imageString: path)
             }
             

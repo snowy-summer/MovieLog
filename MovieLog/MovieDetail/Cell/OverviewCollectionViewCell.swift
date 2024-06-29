@@ -56,6 +56,8 @@ extension OverviewCollectionViewCell {
         moreImageView.tintColor = .baseFont
         
         overviewLabel.numberOfLines = 3
+        overviewLabel.font = .systemFont(ofSize: 15)
+        overviewLabel.textColor = .lightGray
     }
     
     private func configureLayout() {

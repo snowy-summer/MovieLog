@@ -39,7 +39,7 @@ enum MovieCreditCollectionViewSections: Int, CaseIterable {
             
             
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                   heightDimension: .fractionalHeight(0.3))
+                                                   heightDimension: .fractionalHeight(0.45))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                            subitems: [item])
             
@@ -127,7 +127,7 @@ enum MovieCreditCollectionViewSections: Int, CaseIterable {
             section.contentInsets = NSDirectionalEdgeInsets(top: 0,
                                                             leading: 16,
                                                             bottom: 0,
-                                                            trailing: 16)
+                                                            trailing: 0)
             section.interGroupSpacing = 4
             
             let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),

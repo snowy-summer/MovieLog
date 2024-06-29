@@ -25,6 +25,11 @@ final class TitleHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        seeAllButton.isHidden = false
+    }
 }
 
 //MARK: - Method
@@ -33,6 +38,10 @@ extension TitleHeaderView {
     
     func updateContent(title: String) {
         titleLabel.text = title
+    }
+    
+    func hideSeeAllButton() {
+        seeAllButton.isHidden = true
     }
     
 }

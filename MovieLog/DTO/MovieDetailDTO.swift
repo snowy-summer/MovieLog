@@ -11,7 +11,7 @@ import Foundation
 struct MovieDetailDTO: Decodable {
     let id: Int
     let adult: Bool
-    let genres: [Genre]
+    let genres: [Genre]?
     let overview: String?
     let backdropPath: String?
     let imdbID: String?

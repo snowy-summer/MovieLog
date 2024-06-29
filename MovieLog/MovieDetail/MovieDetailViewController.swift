@@ -29,12 +29,24 @@ final class MovieDetailViewController: BaseViewController {
         
         view.backgroundColor = .base
         
-        configureCollectionView()
+        
         fetchData()
         
     }
     
+    override func configureNavigationBar() {
+        
+        let popViewControllerItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
+                                                    style: .plain,
+                                                    target: self,
+                                                    action: #selector(popVC))
+        
+        navigationItem.leftBarButtonItem = popViewControllerItem
+        navigationController?.navigationBar.tintColor = .baseFont
+    }
+    
     override func configureHierarchy() {
+        
         view.addSubview(recommendCollectionView)
     }
     
@@ -45,11 +57,20 @@ final class MovieDetailViewController: BaseViewController {
         }
     }
     
+    override func configureUI() {
+        super.configureUI()
+        
+        configureCollectionView()
+    }
+    
     private func configureCollectionView() {
+        
         recommendCollectionView.delegate = self
         recommendCollectionView.dataSource = self
+        recommendCollectionView.showsVerticalScrollIndicator = false
         
-        
+        recommendCollectionView.register(DetailHeaderCell.self,
+                                         forCellWithReuseIdentifier: DetailHeaderCell.identifier)
         recommendCollectionView.register(OverviewCollectionViewCell.self,
                                          forCellWithReuseIdentifier: OverviewCollectionViewCell.identifier)
         recommendCollectionView.register(CastCollectionViewCell.self,
@@ -89,7 +110,6 @@ extension MovieDetailViewController {
                 
             }
         }
-        
         
         group.enter()
         DispatchQueue.global().async {
@@ -131,7 +151,6 @@ extension MovieDetailViewController {
                 
             }
         }
-        
         
         group.enter()
         DispatchQueue.global().async {
@@ -218,13 +237,13 @@ extension MovieDetailViewController: UICollectionViewDelegate, UICollectionViewD
         
         switch MovieCreditCollectionViewSections(rawValue: indexPath.section) {
         case .collectioViewHeader:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.identifier,
-                                                                for: indexPath) as? PosterCollectionViewCell else {
-                return PosterCollectionViewCell()
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailHeaderCell.identifier,
+                                                                for: indexPath) as? DetailHeaderCell else {
+                return DetailHeaderCell()
             }
             
-            if let data = movieModel.movieDetail?.backdropPath {
-                cell.updateContent(imageString: data)
+            if let data = movieModel.movieDetail {
+                cell.updateContent(data: data)
             }
             
             return cell
@@ -296,7 +315,12 @@ extension MovieDetailViewController: UICollectionViewDelegate, UICollectionViewD
             return TitleHeaderView()
         }
         
+        
         if let section = MovieCreditCollectionViewSections(rawValue: indexPath.section) {
+            if section == .overview || section == .cast {
+                header.hideSeeAllButton()
+            }
+            
             header.updateContent(title: section.sectionTitle)
         }
         
