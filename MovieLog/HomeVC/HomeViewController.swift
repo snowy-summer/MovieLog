@@ -125,8 +125,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return HomeMainCollectionViewCell()
             }
             
-            if let path = trendMovieModel?.results.last?.posterPath {
-                cell.updateContent(imageString: path)
+            if let movie = trendMovieModel?.results.last,
+               let posterPath = movie.posterPath {
+                cell.updateContent(imageString: posterPath)
+                cell.showVideo = { [weak self] in
+                    self?.navigationController?.pushViewController(YoutubeWebViewController(movieId: movie.id),
+                                                             animated: true)
+                    
+                }
             }
             
             

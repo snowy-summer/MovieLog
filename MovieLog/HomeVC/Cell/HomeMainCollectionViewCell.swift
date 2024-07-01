@@ -14,6 +14,7 @@ final class HomeMainCollectionViewCell: UICollectionViewCell {
     private let buttonStackView = UIStackView()
     private let playButton = UIButton()
     private let addButton = UIButton()
+    var showVideo: () -> () = {}
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,6 +22,7 @@ final class HomeMainCollectionViewCell: UICollectionViewCell {
         configureHierarchy()
         configureUI()
         configureLayout()
+        configureGestureAndButtonActions()
     }
     
     required init?(coder: NSCoder) {
@@ -28,7 +30,11 @@ final class HomeMainCollectionViewCell: UICollectionViewCell {
     }
     
     func updateContent(imageString: String) {
-        thumbnailImageView.kf.setImage(with: TMDBRequest.image(imageString).url)
+        thumbnailImageView.kf.setImage(with: TMDBRouter.image(imageString).url)
+    }
+    
+    @objc private func playButtonClicked() {
+        showVideo()
     }
 }
 
@@ -52,6 +58,13 @@ extension HomeMainCollectionViewCell {
         
         buttonStackView.axis = .horizontal
         buttonStackView.spacing = 8
+        
+    }
+    
+    private func configureGestureAndButtonActions() {
+        playButton.addTarget(self,
+                             action: #selector(playButtonClicked),
+                             for: .touchUpInside)
         
     }
     

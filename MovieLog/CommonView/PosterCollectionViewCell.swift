@@ -32,7 +32,7 @@ extension PosterCollectionViewCell {
     func updateContent(imageString: String) {
 
         thumbnailImageView.kf.indicatorType = .activity
-        thumbnailImageView.kf.setImage(with: TMDBRequest.image(imageString).url)
+        thumbnailImageView.kf.setImage(with: TMDBRouter.image(imageString).url)
     }
 }
 

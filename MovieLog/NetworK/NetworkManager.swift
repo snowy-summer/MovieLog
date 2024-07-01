@@ -15,7 +15,7 @@ final class NetworkManager {
     private init() { }
     
     func fetchData<T: Decodable>(_ object: T.Type,
-                                 router: TMDBRequest,
+                                 router: TMDBRouter,
                                  completionHandler: @escaping (Result<T,Error>) -> Void) {
         
         AF.request(router)

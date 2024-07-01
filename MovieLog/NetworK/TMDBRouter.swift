@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-enum TMDBRequest: URLRequestConvertible {
+enum TMDBRouter: URLRequestConvertible {
     
     case search(keyword: String, page: Int)
     case trend(TimeWindow)
@@ -17,6 +17,7 @@ enum TMDBRequest: URLRequestConvertible {
     case recommendedMovies(String)
     case detail(String)
     case image(String)
+    case video(String)
     
     var scheme: String {
         switch self {
@@ -51,6 +52,8 @@ enum TMDBRequest: URLRequestConvertible {
             return "/3/movie/\(movieId)"
         case.image(let posterPath):
             return "/t/p/w500" + posterPath
+        case .video(let movieId):
+            return "/3/movie/\(movieId)/videos"
         }
         
     }
@@ -72,6 +75,9 @@ enum TMDBRequest: URLRequestConvertible {
             
         case .recommendedMovies(let movieId):
             return QueryOfSimilarAndRecommendations(movieId: movieId).queryItem()
+            
+        case .video:
+            return QueryOfVideo().queryItem()
             
         case .detail:
             return QueryOfDetail().queryItem()

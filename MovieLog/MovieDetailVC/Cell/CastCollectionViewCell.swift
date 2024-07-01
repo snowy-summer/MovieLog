@@ -30,7 +30,7 @@ final class CastCollectionViewCell: UICollectionViewCell {
     func updateContent(data: Cast) {
     
         if let profilePath = data.profilePath {
-            profileImageView.kf.setImage(with: TMDBRequest.image(profilePath).url)
+            profileImageView.kf.setImage(with: TMDBRouter.image(profilePath).url)
         } else {
             profileImageView.image = UIImage(systemName: "person")
         }

@@ -26,10 +26,7 @@ final class MovieDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .base
-        
-        
+
         fetchData()
         
     }
@@ -244,6 +241,12 @@ extension MovieDetailViewController: UICollectionViewDelegate, UICollectionViewD
             
             if let data = movieModel.movieDetail {
                 cell.updateContent(data: data)
+                cell.showVideo = { [weak self] in
+                    guard let self = self else { return }
+                    navigationController?.pushViewController(YoutubeWebViewController(movieId: data.id),
+                                                             animated: true)
+                    
+                }
             }
             
             return cell

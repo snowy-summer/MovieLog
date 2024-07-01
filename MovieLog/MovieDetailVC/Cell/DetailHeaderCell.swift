@@ -17,6 +17,7 @@ final class DetailHeaderCell: UICollectionViewCell {
     private let scoreStarImageView = UIImageView()
     private let voteAverageLabel = UILabel()
     private let playButton = UIButton()
+    var showVideo: () -> () = {}
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,6 +25,7 @@ final class DetailHeaderCell: UICollectionViewCell {
         configureHierarchy()
         configureUI()
         configureLayout()
+        configureGestureAndButtonActions()
     }
     
     required init?(coder: NSCoder) {
@@ -37,7 +39,7 @@ extension DetailHeaderCell {
     
     func updateContent(data: MovieDetailDTO) {
         if let imagePath = data.backdropPath {
-            thumbnailImageView.kf.setImage(with: TMDBRequest.image(imagePath).url)
+            thumbnailImageView.kf.setImage(with: TMDBRouter.image(imagePath).url)
         }
         if let voteAverage = data.voteAverage {
             voteAverageLabel.text = "\(round(voteAverage * 10) / 10)"
@@ -57,6 +59,10 @@ extension DetailHeaderCell {
             }
             genreLabel.text = genreText
         }
+    }
+    
+    @objc private func playButtonClicked() {
+        showVideo()
     }
 }
 
@@ -105,8 +111,6 @@ extension DetailHeaderCell {
             make.directionalHorizontalEdges.equalTo(contentView.snp.directionalHorizontalEdges)
         }
         
-        
-        
         thumbnailImageView.snp.makeConstraints { make in
             make.top.directionalHorizontalEdges.equalTo(contentView)
         }
@@ -148,4 +152,12 @@ extension DetailHeaderCell {
         
         }
     }
+    
+    private func configureGestureAndButtonActions() {
+        playButton.addTarget(self,
+                             action: #selector(playButtonClicked),
+                             for: .touchUpInside)
+        
+    }
+    
 }
